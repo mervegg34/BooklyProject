@@ -1,0 +1,39 @@
+﻿@model List <BooklyProject.Entities.Testimonial>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Referanslar</h3>
+@{
+    int count = 0;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Referans Adı Soyadı</th>
+        <th>Yorum</th>
+        <th>Değerlendirme</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Comment</td>
+            <td>@item.Review</td>
+            <td><a href="/Testimonials/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</a>  </td>
+            <td><a href="/Testimonials/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-info"><i class="fa fa-pen"></i> Güncelle</a>  </td>
+        </tr>
+    }
+
+</table>
+<br />
+<td><a href="/Testimonials/AddTestimonial/" class="btn btn-outline-dark">Yeni Referans Ekle</a></td>
+

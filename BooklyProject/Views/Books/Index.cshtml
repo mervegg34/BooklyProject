@@ -1,0 +1,53 @@
+﻿@model List<BooklyProject.Entities.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml"; 
+    int count = 0;
+}
+
+<h3>Kitaplar</h3>
+
+
+<form method="get">
+    <div class="form-group">
+        <input type="text" name="searchText" placeholder="Kelime Ara" />
+        <button class="btn btn-dark btn-sm">Ara </button>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+
+    <div>
+    <tr>
+        <th>#</th>
+        <th>Kapak Resmi</th>
+        <th>Kitap Adı</th>
+        <th>Yazar</th>
+        <th>Fiyat</th>
+        <th>Yıldız Sayısı</th>
+        <th>İndirim Oranı</th>
+        <th>İndirim Durumu</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.CoverImageUrl" style="width:75px;height:75px" alt="Book Görseli" /></td>
+            <td>@item.BookName</td>
+            <td>@item.Author.Name @item.Author.Surname</td>
+            <td>@item.Price </td>
+            <td>@item.Review  </td>
+            <td>@item.DiscountRate </td>
+            <td>@item.IsOnSale  </td>
+            <td><a href="/Books/DeleteBook/@item.BookId" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</a></td>
+            <td><a href="/Books/UpdateBook/@item.BookId" class="btn btn-outline-info"><i class="fa fa-pen"></i>Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+<td><a href="/Books/AddBook/" class="btn btn-outline-dark">Yeni Kitap Ekle</a>   </td>

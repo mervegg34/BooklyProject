@@ -1,0 +1,22 @@
+﻿@model BooklyProject.Entities.Testimonial
+@{
+    ViewBag.Title = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Referans Güncelle</h3>
+
+<form method="post">
+    <input type="hidden" name="TestimonialId" value="@Model.TestimonialId" />
+    <label>Referans Adı Soyadı</label>
+    <input type="text" name="Name" value="@Model.Name" class="form-control" />
+    <br />
+    <label>Yorum</label>
+    <input type="text" name="Comment" value="@Model.Comment" class="form-control" />
+    <br />
+    <label>Değerlendirme</label>
+    <input type="text" name="Review" value="@Model.Review" class="form-control" />
+    <br />
+    <button class="btn btn-outline-dark"><i class="fa fa-pen"></i> Güncelle</button>
+</form>
+

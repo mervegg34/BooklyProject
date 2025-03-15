@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Kitap Ekle</h3>
+
+<form method="post">
+    <label>Görsel Url </label>
+    <input type="text" name="CoverImageUrl" class="form-control" required />
+    <br />
+    <label>Kitap Adı</label>
+    <input type="text" name="BookName" class="form-control" required />
+    <br />
+    <label>Yazar Seçin</label>
+    <select id="authorDropdown" name="AuthorId" class="form-control" required>
+        @foreach (var author in ViewBag.Authors)
+        {
+            <option value="@author.Value">@author.Text - @author.Value</option>
+        }
+    </select>
+    <br />
+    <label>Fiyat </label>
+    <input type="text" name="Price" class="form-control" required />
+    <br />
+    <label>Yıldız Sayısı </label>
+    <input type="text" name="Rewiew" class="form-control" required />
+    <br />
+    <label>İndirim Oranı</label>
+    <input type="text" name="DiscountRate" class="form-control" required />
+    <br />
+
+    <label>İndirim Durumu </label>
+    <select name="IsOnSale" class="form-control" required>
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select>
+    <br />
+
+    <button class="btn btn-outline-dark"> <i class="fa fa-save"></i>Kaydet</button>
+</form>
+
+
+<script>
+document.getElementById("authorDropdown").addEventListener("change", function() {
+        var selectedId = this.value;
+        document.getElementById("authorIdInput").value = selectedId;
+});
+</script>

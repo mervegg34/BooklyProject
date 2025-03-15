@@ -1,0 +1,40 @@
+﻿
+
+<section id="message">
+    <div class="container">
+        <div class="text-center mb-4 mt-4">
+            <h3>Bizimle İletişime Geçin</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form action="/Default/SendMessage" method="post">
+                    <input type="text" class="form-control" name="Name" placeholder="Adınız Soyadınız" required />
+                    <br />
+                    <input type="text" class="form-control" name="Email" placeholder="Mail Adresiniz" required />
+                    <br />
+                    <input type="text" class="form-control" name="Subject" placeholder="Konu" required />
+                    <br />
+                    <textarea class="form-control" name="MessageContent" rows="5" placeholder="Mesajınızı Yazınız..."></textarea>
+                    <br />
+                    <button onclick="sendMessage()" class="btn btn-danger" type="submit">Mesaj Gönder</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+
+    function sendMessage()
+    {
+        Swal.fire({
+            title: "Tebrikler!",
+            text: "Mesajınız başarıyla gönderildi!",
+            icon: "success",
+            confirmButtonText: "Tamam"
+        });
+    }
+
+</script>

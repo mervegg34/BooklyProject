@@ -1,0 +1,26 @@
+﻿@model List<BooklyProject.Entities.Service>
+
+<section id="company-services" class="padding-large pb-0">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+            
+               <div class="col-lg-3 col-md-6 pb-3 pb-lg-0">
+                  <div class="icon-box d-flex">
+                     <div class="icon-box-icon pe-3 pb-3">
+                        <svg class="@item.Icon">
+                            <use xlink:href="@item.Icon" />
+                        </svg>
+                     </div> 
+                     <div class="icon-box-content">
+                        <h4 class="card-title mb-1 text-capitalize text-dark">@item.Title</h4>
+                        <p>@item.Description</p>
+                     </div>
+                  </div>
+               </div>
+             }
+        </div>
+    </div>
+</section>

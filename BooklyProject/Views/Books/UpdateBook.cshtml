@@ -1,0 +1,58 @@
+﻿@model BooklyProject.Entities.Book
+@{
+    ViewBag.Title = "UpdateBook";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Kitap Güncelle</h3>
+
+<form method="post">
+    <input type="hidden" name="BookId" value="@Model.BookId" />
+    <label>Kitap Adı</label>
+    <input type="text" name="BookName" value="@Model.BookName" class="form-control" required />
+    <br />
+    <label>Görsel Url </label>
+    <input type="text" name="CoverImageUrl" value="@Model.CoverImageUrl" class="form-control" required />
+    <br />
+    <label>Yazar Id </label>
+    <select id="authorDropdown" name="AuthorId" class="form-control" required>
+        <option value="@Model.AuthorId">@Model.AuthorId</option>
+        @foreach (var author in ViewBag.Authors)
+        {
+            <option value="@author.Value">@author.Text -@author.Value</option>
+        }
+    </select>
+    <br />
+    <label>Fiyat </label>
+    <input type="text" name="Price" value="@Model.Price" class="form-control" required />
+    <br />
+
+    <label>Yıldız Sayısı</label>
+    <select name="Review" class="form-control" required>
+        <option value="@Model.Review">@Model.Review</option>
+        @for (int i = 1; i < 6; i++)
+        {
+
+            <option value="@i">@i</option>
+        }
+    </select>
+    <br />
+
+    <label>İndirim Oranı </label>
+    <input type="text" name="DiscountRate" value="@Model.DiscountRate" class="form-control" required />
+    <br />
+
+    <label>İndirim Durumu </label>
+    <select name="IsOnSale" class="form-control" required>
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select>
+    <br />
+    <button class="btn btn-outline-dark"> <i class="fa fa-pen"></i>Güncelle</button>
+</form>
+<script>
+    document.getElementById("authorDropdown").addEventListener("change", function () {
+        var selectedId = this.value;
+        document.getElementById("authorIdInput").value = selectedId;
+    });
+</script>
